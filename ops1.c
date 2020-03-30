@@ -45,7 +45,7 @@ int main()
   {
     printf("|  P[%0.1f]   |       %0.02f      |     %0.02f      |\n",process[i],at[i],bt[i]);
 	}
-      // arranging according burst time
+      // arranging according burst time,exection time,arrival time
   long int p = 1;
   double time = 0;
   for(j=0;j<n;j++)
@@ -74,20 +74,20 @@ int main()
   }
   waitingTime[0] = 0;     // waiting time for first process will be zero
   
-  for(i=1;i<n;i++)           //calculating waiting time
+ for(i=1;i<n;i++)           //calculating waiting time
   {
-    sum =sum + bt[i-1];
-    waitingTime[i] = sum - at[i];
-    wait_total =wait_total + waitingTime[i]; 
+    waitingTime[i]=0;
+    turnaroundTime[i]=0;
+    for(j=0;j<i;j++)
+    {
+    	waitingTime[i]=waitingTime[i]+ bt[j];
+	}
+	turnaroundTime[i]=waitingTime[i]+bt[i];
+	
+	wait_total=wait_total+waitingTime[i];
+	turnaround_total=turnaround_total+turnaroundTime[i];
   }
   wait_avg = wait_total/n;
-  
-  for(i=0;i<n;i++)
-  {
-    sum1 =sum1 + bt[i];
-    turnaroundTime[i] = sum1 - at[i];
-    turnaround_total =turnaround_total + turnaroundTime[i];
-  }
   turnaround_avg=turnaround_total/n;
   
 printf("\n    Now  Values \n\n");
