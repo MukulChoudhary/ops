@@ -1,1 +1,1 @@
-# ops
+Consider a scheduling approach which is non preemptive similar to shortest job next in nature.the priority of each job depend upon its estimated run time ,and also the amount of time it has spent waiting. Jobs gain higher priority the longer they wait,Which prevent indefinite postponement. The jobs that have spent a long time waiting compete against those estimated to have short run time. The priority  can be computed as:      priority = (1 + Waiting time)/Estimated run time
